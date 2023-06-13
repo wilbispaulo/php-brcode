@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Formata uma sring como url amigável
+ * Formata uma string removendo acentos e caracteres especiais
  * 
  * @param string $string
  * @return string
@@ -31,7 +31,7 @@ function limpa(string $string):string
  * 
  * @param $str
  * @param $polynomial
- * @param $iniValue
+ * @param $initValue
  * @param $strType = "hex"
  * @param $xOrValue = 0
  * @param $inputReverse = false
