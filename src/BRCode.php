@@ -5,6 +5,7 @@ namespace wilbispaulo\BRcode;
 require_once "helpers.php";
 
 define("CHAVE", "2601");
+define("VALOR", "54");
 define("NOME", "59");
 define("CIDADE", "60");
 define("TXID", "6205");
@@ -30,6 +31,7 @@ class BRcode
             ['2601', '1234567'],            //Merchant Account Information-Chave
             ['52', '0000'],                 //Merchant Category Code
             ['53', '986'],                  //Transaction Currency (R$)
+            ['54', ''],                     //Amount (R$)
             ['58', 'BR'],                   //Country Code
             ['59', 'FULANO DE TAL'],        //Merchant Name
             ['60', 'BRASILIA'],             //Merchant City
@@ -44,7 +46,7 @@ class BRcode
         $this->arranjo[$id][1] = $chave;
     }
 
-    public function setName(string $nome)
+    public function setNome(string $nome)
     {
         $id = array_search(NOME, array_column($this->arranjo, 0));
         $nome = strtoupper(limpa($nome));
@@ -64,6 +66,12 @@ class BRcode
         $this->arranjo[$id][1] = $txid;
     }
 
+    public function setValor(string $valor)
+    {
+        $id = array_search(VALOR, array_column($this->arranjo, 0));
+        $this->arranjo[$id][1] = $valor;
+    }
+
     public function gerar(): string
     {
         $brcode = "";
@@ -75,6 +83,9 @@ class BRcode
         foreach($colId as $key => $nomeId)
         {
             $tam = strlen($this->arranjo[$key][1]);
+            if ($tam == 0) {
+                continue;
+            }
             $tam = sprintf("%02d", $tam);
             $id = substr($nomeId, 0, 2);
             if ($id != $idAnt) {
