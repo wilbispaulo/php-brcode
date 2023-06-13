@@ -1,0 +1,22 @@
+{
+    "name": "wilbispaulo/php-brcode",
+    "description": "Biblioteca de classe para geração do pix copia e cola padrão BRCODE",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wilbis W. Paulo",
+            "email": "wilbispaulo@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "wilbispaulo\\BRcode\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    }
+}
