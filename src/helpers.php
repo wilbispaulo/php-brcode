@@ -2,6 +2,7 @@
 
 /**
  * Formata uma sring como url amigável
+ * 
  * @param string $string
  * @return string
  */
@@ -25,6 +26,18 @@ function limpa(string $string):string
     return $slug;
 }
 
+/**
+ * Gera um CRC16
+ * 
+ * @param $str
+ * @param $polynomial
+ * @param $iniValue
+ * @param $strType = "hex"
+ * @param $xOrValue = 0
+ * @param $inputReverse = false
+ * @param $outputRecerse = false
+ * @return $string
+ */
 function crc16($str, $polynomial, $initValue, $strType="hex", $xOrValue = 0, $inputReverse = false, $outputReverse = false) {
     $crc = $initValue;
     if($strType == "hex"){
@@ -84,7 +97,7 @@ function reverseString($str) {
 /**
  * Inverte um caractere pouco a pouco eg: 65 (01000001) --> 130(10000010)
  * @param $char
- * @return $char
+ * @return $string
  */
 function reverseChar($char) : string {
     $byte = ord($char);
