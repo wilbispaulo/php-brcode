@@ -18,7 +18,8 @@
             "wilbispaulo\\BRcode\\": "src/"
         },
         "files": [
-            "src/helpers.php"
+            "src/helpers.php",
+            "src/constants.php"
         ]
     }
 }
