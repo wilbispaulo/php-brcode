@@ -15,28 +15,28 @@ class BRcode
 
     public function __construct(string $chave, string $nome, string $cidade, string $txId = "***", string $valor = "")
     {
-        $chave = $this->validaChave($chave);
+        $chave = self::validaChave($chave);
         if ($chave === false) {
             unset($this->data);
             return $this->data = false;
         }
-        $nome = $this->validaNome($nome);
+        $nome = self::validaNome($nome);
         var_dump($nome);
         if ($nome === false) {
             unset($this->data);
             return $this->data = false;
         }
-        $cidade = $this->validaCidade($cidade);
+        $cidade = self::validaCidade($cidade);
         if ($cidade === false) {
             unset($this->data);
             return $this->data = false;
         }
-        $txId = $this->validaTxId($txId);
+        $txId = self::validaTxId($txId);
         if ($txId === false) {
             unset($this->data);
             return $this->data = false;
         }
-        $valor = $this->validaValor($valor);
+        $valor = self::validaValor($valor);
         if ($valor === false) {
             unset($this->data);
             return $this->data = false;
@@ -48,7 +48,7 @@ class BRcode
         $this->data[VALOR] = $valor;
     }
 
-    public function validaChave(string $chave): string | bool
+    public static function validaChave(string $chave): string | bool
     {
         if (strlen($chave) > MAXL_CHAVE) {
             return false;
@@ -64,7 +64,7 @@ class BRcode
         return $chave;
     }
 
-    public function validaNome(string $nome)
+    public static function validaNome(string $nome)
     {
         $nome = strtoupper(limpa($nome));
         $nome = substr($nome, 0, 25);
@@ -75,7 +75,7 @@ class BRcode
         return false;
     }
 
-    public function validaCidade(string $cidade)
+    public static function validaCidade(string $cidade)
     {
         $cidade = strtoupper(limpa($cidade));
         $cidade = substr($cidade, 0, 15);
@@ -86,7 +86,7 @@ class BRcode
         return false;
     }
 
-    public function validaTxId(string $txId)
+    public static function validaTxId(string $txId)
     {
         $txId = limpa($txId);
         $txId = substr($txId, 0, 25);
@@ -97,7 +97,7 @@ class BRcode
         return false;
     }
 
-    public function validaValor(string $valor)
+    public static function validaValor(string $valor)
     {
         if ($valor == '') {
             return $valor;
