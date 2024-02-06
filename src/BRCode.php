@@ -21,7 +21,6 @@ class BRcode
             return $this->data = false;
         }
         $nome = self::validaNome($nome);
-        var_dump($nome);
         if ($nome === false) {
             unset($this->data);
             return $this->data = false;
