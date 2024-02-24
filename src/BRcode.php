@@ -109,6 +109,9 @@ class BRcode
         if (preg_match("/^([0-9]{1,10})(\.[0-9]{2})$/", $valor)) {
             return $valor;
         }
+        if (preg_match("/^([0-9]{3,12})$/", $valor)) {
+            return substr_replace($valor, ".", -2, 0);
+        }
         return false;
     }
 
