@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * Formata uma string substituindo %20 por " "
+ * 
+ * @param string $string
+ * @return string
+ */
+function removeEscEsp(string $string): string
+{
+    return strtr($string, ['%20' => ' ']);
+}
+
+/**
  * Formata uma string removendo acentos e caracteres especiais
  * 
  * @param string $string
@@ -16,12 +27,15 @@ function limpa(string $string): string
         'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e',
         'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o',
         'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y', 'ý' => 'y', 'þ' => 'b',
-        'ÿ' => 'y', 'Ŕ' => 'R', 'ŕ' => 'r', '\\' => '',
+        'ÿ' => 'y', 'Ŕ' => 'R', 'ŕ' => 'r', '\\' => '', '%20' => ' ',
+        '%C3%81' => 'A', '%C3%89' => 'E', '%C3%8D' => 'I', '%C3%93' => 'O', '%C3%9A' => 'U',
+        '%C3%A1' => 'a', '%C3%A9' => 'e', '%C3%AD' => 'i', '%C3%B3' => 'o', '%C3%BA' => 'u',
+        '%C3%83' => 'A', '%C3%A3' => 'a', '%C3%87' => 'C', '%C3%A7' => 'c'
     );
     $slug_table = strtr($string, $table);
     $slug_trim = trim($slug_table);
     $slug_tag = strip_tags($slug_trim);
-    $slug_space = preg_replace('/[@%\[\]{}()\'\"`´^~|<>,.:;?+-\/]/', '', $slug_tag);
+    $slug_space = preg_replace('/[@%\[\]{}()\'\"`´^~|<>,.:;?+\/-]/', '', $slug_tag);
     // $slug = strtolower($slug_space);
     return $slug_space;
 }

@@ -115,6 +115,11 @@ class BRcode
         return false;
     }
 
+    public static function removeEscEsp(string $string): string
+    {
+        return removeEscEsp($string);
+    }
+
     public function setChave(string $chave)
     {
         $this->data[CHAVE] = $chave;
