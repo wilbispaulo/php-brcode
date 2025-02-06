@@ -89,9 +89,10 @@ class BRcode
     {
         $txId = limpa($txId);
         $txId = substr($txId, 0, 25);
-        $txId = preg_replace("/[ ]/", '', $txId);
-
-        if (preg_match("/^([a-zA-Z0-9]+)|([*]{3})$/", $txId)) {
+        if ($txId === '***') {
+            return $txId;
+        }
+        if ($txId = preg_replace("/[^a-zA-Z0-9]+/", '', $txId)) {
             return $txId;
         }
         return false;
