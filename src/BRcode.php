@@ -179,10 +179,11 @@ class BRcode
                     $subCodePix .= sprintf("%02d", strlen($this->data[$key][$id]));
                     $subCodePix .= $this->data[$key][$id];
                 }
-                $codePix .= $key . strlen($subCodePix) . $subCodePix;
+                $codePix .= $key . sprintf("%02d", strlen($subCodePix)) . $subCodePix;
                 $subCodePix = "";
             }
         }
+
         return $codePix;
     }
 }
